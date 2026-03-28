@@ -1,0 +1,123 @@
+/* settings.css - تصميم صفحة الإعدادات (احترافي + متجاوب) */
+
+.st-hero{
+  border-radius: var(--radius);
+  border:2px solid var(--line);
+  background: linear-gradient(135deg, rgba(16,185,129,.10), rgba(37,99,235,.10), rgba(168,85,247,.08));
+  padding: 16px;
+}
+
+.st-hero-title h1{margin:0; font-size: 32px; font-weight:1000}
+.st-hero-title p{margin:10px 0 0; color: var(--muted); font-weight:900}
+
+.st-metrics{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.st-form{
+  padding:14px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  align-items:end;
+}
+@media (max-width: 980px){
+  .st-form{grid-template-columns: 1fr}
+}
+
+.st-hint{
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.st-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.st-actions .btn,
+.st-actions .link{
+  min-height: 44px;
+}
+
+/* buttons colors */
+.st-btn-save{
+  background: linear-gradient(135deg, #2563eb, #a855f7);
+  box-shadow: 0 18px 44px rgba(37,99,235,.22);
+}
+.st-btn-save:hover{filter: brightness(1.05);}
+
+.st-btn-danger{
+  border-color: rgba(239,68,68,.40) !important;
+  background: rgba(239,68,68,.10) !important;
+  color: var(--danger) !important;
+}
+.st-btn-danger:hover{filter: brightness(1.03);}
+
+/* preview */
+.st-preview{
+  margin-top: 8px;
+  border-top:2px solid var(--line);
+  padding-top: 12px;
+}
+.st-preview-title{
+  font-weight:1000;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.st-logo-box{
+  border:2px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel2);
+  padding: 12px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.st-logo-box img{
+  width: min(420px, 100%);
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: rgba(0,0,0,.06);
+  border:2px solid rgba(0,0,0,.06);
+}
+
+.st-empty{
+  border:2px dashed var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  padding: 14px;
+  text-align:center;
+  font-weight: 900;
+  color: var(--muted);
+}
+
+.st-path{
+  display:inline-block;
+  padding: 6px 10px;
+  border-radius: 12px;
+  border:2px dashed var(--line);
+  background: rgba(255,255,255,.06);
+  font-weight: 1000;
+  direction: ltr;
+  text-align: left;
+  word-break: break-all;
+}
+
+/* Mobile tweaks */
+@media (max-width: 520px){
+  .st-hero-title h1{font-size: 26px;}
+  .st-hero{padding: 12px;}
+  .st-actions .btn,
+  .st-actions .link{width: 100%;}
+}

@@ -1,0 +1,292 @@
+.hero{
+  padding: 22px 0 10px;
+}
+
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  align-items:center;
+
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 24px rgba(0,0,0,.06);
+  padding: 18px;
+}
+
+.hero__content{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+
+.hero__small{
+  font-weight: 1000;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hero__title{
+  margin: 0;
+  font-weight: 1000;
+  font-size: 36px;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.hero__desc{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 800;
+  line-height: 1.9;
+  max-width: 560px;
+}
+
+.hero__actions{
+  margin-top: 2px;
+}
+
+.hero__btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 14px 22px;
+  border-radius: 16px;
+  font-weight: 1000;
+  text-decoration: none;
+  background: var(--primary);
+  color:#fff;
+  border: 2px solid var(--primary);
+  transition: .2s ease;
+  min-width: 220px;
+}
+.hero__btn:hover{
+  background: transparent;
+  color: var(--primary);
+}
+
+.hero__media{
+  display:flex;
+  justify-content:center;
+}
+
+/* ✅ تقليل سمك الأحمر خلف صورة المدرس (بدون لمس الكارت الأبيض) */
+.hero__imgWrap{
+  width: min(560px, 100%);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  background: #8e1d28;
+
+  /* ✅ سمك الأحمر */
+  padding: 2px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-sizing: border-box;
+}
+
+.hero__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 999px;
+  background: transparent;
+  transform: scale(1.06);
+}
+
+/* =========================================================
+   ✅ Stats block (like your screenshot)
+   ========================================================= */
+
+.hero-stats{
+  position: relative;
+  margin-top: 14px;
+  padding: 0;
+}
+
+.hero-stats__bg{
+  position:absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  font-weight: 1000;
+  font-size: clamp(62px, 10vw, 160px);
+  letter-spacing: 2px;
+  color: rgba(0,0,0,.08);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+html[data-theme="dark"] .hero-stats__bg{
+  color: rgba(255,255,255,.08);
+}
+
+.hero-stats__grid{
+  position: relative;
+  z-index: 1;
+
+  background: #8e1d28;
+  color: #fff;
+
+  border-radius: 22px;
+  box-shadow: 0 16px 34px rgba(0,0,0,.16);
+
+  padding: 22px 18px;
+
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  text-align:center;
+}
+
+.hero-stats__item{
+  padding: 10px 6px;
+}
+
+.hero-stats__value{
+  font-weight: 1000;
+  font-size: clamp(28px, 3.2vw, 56px);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.hero-stats__label{
+  font-weight: 900;
+  font-size: clamp(14px, 1.4vw, 18px);
+  opacity: .96;
+}
+
+/* Mobile */
+@media (max-width: 980px){
+  .hero__grid{
+    grid-template-columns: 1fr;
+    text-align:center;
+    gap: 14px;
+  }
+
+  .hero__media{ order: 1; }
+  .hero__content{ order: 2; }
+
+  .hero__content{ gap: 12px; }
+
+  .hero__title{
+    font-size: 30px;
+    line-height: 1.28;
+  }
+
+  .hero__desc{
+    margin-left:auto;
+    margin-right:auto;
+    line-height: 2.0;
+  }
+
+  .hero__btn{
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero__imgWrap{
+    width: min(460px, 100%);
+    padding: 2px;
+  }
+
+  .hero__img{
+    transform: scale(1.05);
+  }
+
+  .hero-stats__grid{
+    grid-template-columns: 1fr;
+    text-align:center;
+    padding: 18px 14px;
+  }
+
+  .hero-stats__bg{
+    top: 50%;
+    font-size: clamp(56px, 14vw, 120px);
+  }
+}
+
+/* =========================================================
+   ✅ Professional intro animation (on page load)
+   - activated by adding: body.hero-animate
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce){
+  .hero__small,
+  .hero__title,
+  .hero__desc,
+  .hero__actions,
+  .hero__imgWrap,
+  .hero-stats{
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Start state */
+body:not(.hero-animate) .hero__small,
+body:not(.hero-animate) .hero__title,
+body:not(.hero-animate) .hero__desc,
+body:not(.hero-animate) .hero__actions{
+  opacity: 0;
+  transform: translateX(18px);
+}
+
+body:not(.hero-animate) .hero__imgWrap{
+  opacity: 0;
+  transform: scale(.94);
+}
+
+body:not(.hero-animate) .hero-stats{
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+/* When activated */
+body.hero-animate .hero__small{
+  animation: heroFadeSlide .75s cubic-bezier(.2,.8,.2,1) .05s both;
+}
+body.hero-animate .hero__title{
+  animation: heroFadeSlide .80s cubic-bezier(.2,.8,.2,1) .16s both;
+}
+body.hero-animate .hero__desc{
+  animation: heroFadeSlide .85s cubic-bezier(.2,.8,.2,1) .28s both;
+}
+body.hero-animate .hero__actions{
+  animation: heroFadeSlide .90s cubic-bezier(.2,.8,.2,1) .40s both;
+}
+
+body.hero-animate .hero__imgWrap{
+  animation: heroZoomFade .95s cubic-bezier(.2,.8,.2,1) .12s both;
+}
+
+body.hero-animate .hero-stats{
+  animation: heroStatsIn .85s cubic-bezier(.2,.8,.2,1) .25s both;
+}
+
+/* Keyframes */
+@keyframes heroFadeSlide{
+  from{ opacity:0; transform: translateX(18px); }
+  to{ opacity:1; transform: translateX(0); }
+}
+
+@keyframes heroZoomFade{
+  from{ opacity:0; transform: scale(.94); }
+  to{ opacity:1; transform: scale(1); }
+}
+
+@keyframes heroStatsIn{
+  from{ opacity:0; transform: translateY(14px); }
+  to{ opacity:1; transform: translateY(0); }
+}

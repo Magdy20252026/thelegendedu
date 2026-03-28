@@ -1,0 +1,949 @@
+/* students/assets/css/account-lecture.css */
+
+.acc-lecturePage{ padding: 14px 0 24px; }
+
+.acc-lectureInfo{
+  display:grid;
+  gap: 8px;
+  margin-top: 10px;
+  font-weight: 900;
+}
+
+.acc-lectureInfo__row{
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.02);
+}
+
+.acc-lectureDetails{
+  margin-top: 10px;
+  color: var(--text);
+  line-height: 1.9;
+  font-weight: 850;
+}
+
+.acc-lectureActions{
+  margin-top: 12px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.acc-itemsList{
+  display:grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.acc-item{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items:center;
+
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+}
+
+.acc-item__title{ font-weight: 1000; color: var(--text); }
+.acc-item__meta{ color: var(--muted); font-weight: 900; }
+.acc-item__lock{
+  width: 36px;
+  height: 36px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  border: 1px solid var(--border);
+  background: rgba(207,42,55,.08);
+}
+
+.acc-itemsList--media{ margin-top: 16px; }
+
+.acc-item--media{
+  width: 100%;
+  text-align: right;
+  cursor: default;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.acc-item--media:hover{
+  transform: translateY(-1px);
+  border-color: rgba(44,123,229,.35);
+}
+
+.acc-item--media.is-active{
+  border-color: rgba(44,123,229,.55);
+  box-shadow: 0 12px 34px rgba(44,123,229,.12);
+}
+
+.acc-item--media.is-blocked{
+  opacity: .75;
+}
+
+.acc-item__body{
+  display:grid;
+  gap: 6px;
+}
+
+.acc-item__side{
+  display:grid;
+  gap: 8px;
+  justify-items:end;
+}
+
+.acc-item__desc{
+  color: var(--text);
+  font-weight: 850;
+  line-height: 1.7;
+}
+
+.acc-item__badge{
+  justify-self: start;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(46, 125, 50, .12);
+  color: #1d6b22;
+  font-weight: 900;
+  font-size: .9rem;
+}
+
+.acc-item__badge--danger{
+  background: rgba(207,42,55,.1);
+  color: #b91c1c;
+}
+
+.acc-playerShell,
+.acc-pdfShell{
+  display:grid;
+  gap: 14px;
+}
+
+.acc-playerStage,
+.acc-pdfViewer{
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #06070d;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 24px 50px rgba(0,0,0,.22);
+}
+
+.acc-playerStage{
+  min-height: min(62vw, 540px);
+  --acc-fullscreen-controls-max-height: min(34vh, 220px);
+}
+
+.acc-playerStage:fullscreen,
+.acc-playerStage:-webkit-full-screen{
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  border-radius: 0;
+}
+
+.acc-playerStage--mobileLandscapeFallback:fullscreen,
+.acc-playerStage--mobileLandscapeFallback:-webkit-full-screen{
+  width: 100vh;
+  height: 100vw;
+  max-width: 100vh;
+  max-height: 100vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center center;
+}
+
+.acc-playerStage--nativeAppFullscreen.acc-playerStage--mobileLandscapeFallback{
+  width: 100vh;
+  height: 100vw;
+  max-width: 100vh;
+  max-height: 100vw;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center center;
+}
+
+.acc-playerStage:fullscreen .acc-playerSurface,
+.acc-playerStage:-webkit-full-screen .acc-playerSurface{
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.acc-body--nativeVideoFullscreen{
+  overflow: hidden;
+}
+
+.acc-playerStage--nativeAppFullscreen{
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  border-radius: 0;
+}
+
+.acc-playerStage--nativeAppFullscreen .acc-playerSurface{
+  height: 100%;
+  min-height: 100%;
+}
+
+.acc-playerStage--mobileLandscapeFallback:fullscreen .acc-playerSurface,
+.acc-playerStage--mobileLandscapeFallback:-webkit-full-screen .acc-playerSurface,
+.acc-playerStage--nativeAppFullscreen.acc-playerStage--mobileLandscapeFallback .acc-playerSurface{
+  height: 100%;
+  min-height: 100%;
+}
+
+.acc-playerSurface{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+}
+
+.acc-playerPlaceholder{
+  position: absolute;
+  inset: 0;
+  display:grid;
+  place-items:center;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  background:
+    radial-gradient(circle at top, rgba(44,123,229,.25), transparent 46%),
+    linear-gradient(135deg, #0a1020, #05070d);
+}
+
+.acc-pdfPlaceholder{
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px dashed rgba(44,123,229,.35);
+  background: rgba(44,123,229,.08);
+  color: var(--text);
+  font-weight: 900;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.acc-embeddedFrame,
+.acc-embeddedHtml,
+.acc-pdfViewer iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display:block;
+  background: #000;
+}
+
+.acc-embeddedHtml{
+  position: relative;
+  overflow: hidden;
+}
+
+.acc-playerEmbedHost{
+  width: 100%;
+  height: 100%;
+}
+
+.acc-embeddedHtml iframe,
+.acc-playerEmbedHost iframe,
+.acc-embeddedHtml video,
+.acc-playerEmbedHost video{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #000;
+}
+
+.acc-playerOverlay,
+.acc-pdfOverlay{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:3;
+}
+
+.acc-playerInteractionShield{
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.acc-playerOverlay__chip,
+.acc-pdfOverlay__chip,
+.acc-screenWatermark__chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(10, 15, 30, .55);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.78);
+  font-size: .95rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+  backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0,0,0,.22);
+}
+
+.acc-playerOverlay__chip{
+  position:absolute;
+  top: 14px;
+  right: 18px;
+  animation: playerWatermarkMove 16s linear infinite alternate;
+}
+
+.acc-pdfOverlay__chip{
+  position:absolute;
+  bottom: 18px;
+  right: 18px;
+  animation: playerWatermarkMove 18s linear infinite alternate-reverse;
+}
+
+.acc-playerToolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.acc-playerToolbar__meta{
+  display:grid;
+  gap: 6px;
+}
+
+.acc-playerToolbar__title{
+  font-size: 1.06rem;
+  font-weight: 1000;
+  color: var(--text);
+}
+
+.acc-playerToolbar__sub{
+  color: var(--muted);
+  font-weight: 900;
+  line-height: 1.8;
+}
+
+.acc-playerToolbar__actions{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.acc-playerNotice{
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px dashed rgba(44,123,229,.35);
+  background: rgba(44,123,229,.08);
+  color: var(--text);
+  font-weight: 900;
+  line-height: 1.8;
+}
+
+.acc-platformControls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(173, 201, 255, .34);
+  background:
+    radial-gradient(circle at top right, rgba(53, 161, 255, .2), transparent 42%),
+    linear-gradient(135deg, rgba(4, 10, 24, .96), rgba(8, 18, 42, .95));
+  box-shadow: 0 18px 38px rgba(0,0,0,.5);
+  transition: opacity .24s ease, transform .24s ease;
+}
+
+.acc-platformControls__group{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.acc-platformControls__group--actions{
+  flex: 1 1 300px;
+}
+
+@media (hover: none) and (pointer: coarse) and (orientation: landscape),
+       (hover: none) and (pointer: coarse) and (max-height: 720px),
+       (max-width: 640px){
+  .acc-playerStage--platformControls{
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-items: stretch;
+  }
+
+  .acc-playerStage--platformControls .acc-playerSurface{
+    height: auto;
+    min-height: 0;
+  }
+
+  .acc-playerStage--platformControls .acc-platformControls{
+    position: relative;
+    inset: auto;
+    margin: 10px;
+    max-height: none;
+  }
+
+  .acc-platformControls__group--actions{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+}
+
+.acc-platformControls__group--timeline{
+  flex: 2 1 340px;
+}
+
+.acc-platformControls__group--audio{
+  flex: 1 1 170px;
+}
+
+.acc-platformControls__iconBtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  min-height: 42px;
+  padding-inline: 16px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: .94rem;
+  white-space: nowrap;
+  border-color: rgba(184,211,255,.42);
+  background: linear-gradient(135deg, rgba(30, 93, 185, .97), rgba(41, 134, 233, .9));
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 10px 20px rgba(0,0,0,.3);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.acc-platformControls__iconBtn:hover:not(:disabled),
+.acc-platformControls__iconBtn:focus-visible{
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.26), 0 14px 24px rgba(0,0,0,.38);
+  filter: brightness(1.05);
+}
+
+.acc-platformControls__iconBtn:disabled{
+  opacity: .62;
+  box-shadow: none;
+  transform: none;
+  filter: none;
+}
+
+.acc-viewerFrameShell .acc-playerStage .acc-platformControls{
+  position: absolute;
+  inset-inline-start: 10px;
+  inset-inline-end: 10px;
+  bottom: 10px;
+  z-index: 4;
+  backdrop-filter: blur(6px);
+  max-height: calc(100% - 20px);
+  width: min(calc(100% - 20px), 960px);
+  margin-inline: auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
+}
+
+.acc-playerStage--nativeAppFullscreen .acc-platformControls{
+  inset-inline-start: max(10px, env(safe-area-inset-left));
+  inset-inline-end: max(10px, env(safe-area-inset-right));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  max-height: calc(100% - env(safe-area-inset-top) - 20px);
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+
+.acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen,
+.acc-playerStage--platformControls:fullscreen,
+.acc-playerStage--platformControls:-webkit-full-screen{
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: stretch;
+}
+
+.acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen .acc-playerSurface,
+.acc-playerStage--platformControls:fullscreen .acc-playerSurface,
+.acc-playerStage--platformControls:-webkit-full-screen .acc-playerSurface{
+  height: auto;
+  min-height: 0;
+}
+
+.acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen .acc-platformControls,
+.acc-playerStage--platformControls:fullscreen .acc-platformControls,
+.acc-playerStage--platformControls:-webkit-full-screen .acc-platformControls{
+  position: relative;
+  inset: auto;
+  margin: 10px max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  max-height: var(--acc-fullscreen-controls-max-height);
+}
+
+.acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen.acc-playerStage--mobileLandscapeFallback{
+  display: block;
+}
+
+.acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen.acc-playerStage--mobileLandscapeFallback .acc-playerSurface{
+  height: 100%;
+  min-height: 100%;
+}
+
+.acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen.acc-playerStage--mobileLandscapeFallback .acc-platformControls{
+  position: absolute;
+  inset-inline-start: max(10px, env(safe-area-inset-left));
+  inset-inline-end: max(10px, env(safe-area-inset-right));
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 4;
+  margin: 0;
+}
+
+@media (hover: none) and (pointer: coarse) and (orientation: landscape),
+       (hover: none) and (pointer: coarse) and (max-height: 720px){
+  .acc-playerStage--platformControls:fullscreen,
+  .acc-playerStage--platformControls:-webkit-full-screen{
+    display: block;
+  }
+
+  .acc-playerStage--platformControls:fullscreen .acc-playerSurface,
+  .acc-playerStage--platformControls:-webkit-full-screen .acc-playerSurface{
+    height: 100%;
+    min-height: 100%;
+  }
+
+  .acc-playerStage--platformControls:fullscreen .acc-platformControls,
+  .acc-playerStage--platformControls:-webkit-full-screen .acc-platformControls{
+    position: absolute;
+    inset-inline-start: max(8px, env(safe-area-inset-left));
+    inset-inline-end: max(8px, env(safe-area-inset-right));
+    bottom: max(8px, env(safe-area-inset-bottom));
+    margin: 0;
+    max-height: min(34vh, 176px);
+    gap: 6px;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen{
+    display: grid;
+  }
+
+  .acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen .acc-playerSurface{
+    height: auto;
+    min-height: 0;
+  }
+
+  .acc-playerStage--platformControls.acc-playerStage--nativeAppFullscreen .acc-platformControls{
+    position: relative;
+    inset: auto;
+    margin: 8px max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+    max-height: min(30vh, 168px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable both-edges;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .acc-platformControls__group{
+    gap: 6px;
+    flex-basis: auto;
+    min-width: 0;
+  }
+
+  .acc-platformControls__group--timeline,
+  .acc-platformControls__group--audio{
+    min-width: 0;
+  }
+
+  .acc-platformControls__group--timeline{
+    flex: 1 1 220px;
+  }
+
+  .acc-platformControls__group--audio{
+    flex: 0 1 auto;
+  }
+
+  .acc-platformControls__group--actions .acc-modal-btn{
+    width: 100%;
+    min-height: 36px;
+    padding-inline: 10px;
+    font-size: .84rem;
+    gap: 4px;
+  }
+
+  .acc-platformControls__label{
+    font-size: .82rem;
+  }
+
+  .acc-platformControls__select{
+    min-width: 80px;
+    padding: 7px 8px;
+    font-size: .88rem;
+  }
+
+  .acc-platformControls__range{
+    width: min(140px, 34vw);
+  }
+
+  .acc-platformControls__timeline{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .acc-platformControls__time{
+    min-width: 94px;
+    font-size: .84rem;
+  }
+}
+
+.acc-playerStage--immersive .acc-platformControls{
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px);
+  pointer-events: none;
+}
+
+.acc-playerStage--immersive.acc-playerStage--controlsVisible .acc-platformControls{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.acc-platformControls__label{
+  font-weight: 900;
+  color: rgba(235, 244, 255, .95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+.acc-platformControls__select{
+  min-width: 92px;
+  border-radius: 10px;
+  border: 1px solid rgba(173, 201, 255, .34);
+  background: rgba(4, 11, 28, .78);
+  color: rgba(245, 249, 255, .95);
+  padding: 8px 10px;
+  font-weight: 900;
+  font-family: inherit;
+}
+
+.acc-platformControls__range{
+  width: 130px;
+}
+
+.acc-platformControls__timeline{
+  width: min(310px, 44vw);
+  min-width: 150px;
+}
+
+.acc-platformControls__time{
+  font-weight: 900;
+  color: rgba(245, 249, 255, .95);
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
+  min-width: 110px;
+  text-align: center;
+}
+
+.acc-platformControls__timeline,
+.acc-platformControls__range{
+  accent-color: #1bd5ff;
+}
+
+.acc-playerStage--platformControls .acc-playerSurface::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.acc-playerStage--youtubeInteractionBlocked .acc-playerSurface::after{
+  z-index: 3;
+}
+
+.acc-playerProtectionMask{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .3;
+  background-image:
+    repeating-linear-gradient(-32deg, rgba(255,255,255,.16) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(32deg, rgba(255,255,255,.11) 0 1px, transparent 1px 72px);
+}
+
+.acc-captureShield{
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 22px;
+  color: rgba(255,255,255,.92);
+  font-weight: 900;
+  letter-spacing: .01em;
+  line-height: 1.8;
+  background: rgba(0,0,0,.985);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.acc-captureShield__content{
+  display:grid;
+  gap: 14px;
+  justify-items:center;
+  max-width: min(92%, 560px);
+}
+
+.acc-captureShield__text{
+  max-width: 100%;
+}
+
+.acc-captureShield__action{
+  min-width: min(100%, 260px);
+  pointer-events: auto;
+}
+
+.acc-captureShield--active{
+  opacity: 1;
+  visibility: visible;
+}
+
+.acc-captureShield--locked{
+  pointer-events: auto;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.99), rgba(0,0,0,.965)),
+    repeating-linear-gradient(-32deg, rgba(255,255,255,.1) 0 2px, transparent 2px 58px);
+}
+
+.acc-playerStage--captureBlocked .acc-playerSurface{
+  filter: brightness(0);
+}
+
+.acc-playerStage--captureBlocked .acc-playerOverlay,
+.acc-playerStage--captureBlocked .acc-playerProtectionMask,
+.acc-playerStage--captureBlocked .acc-platformControls{
+  opacity: 0;
+}
+
+.acc-viewerPage{
+  padding: 14px 0 28px;
+}
+
+.acc-viewerHero{
+  display:grid;
+  gap: 14px;
+}
+
+.acc-viewerHero__top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.acc-viewerHero__meta{
+  display:grid;
+  gap: 8px;
+}
+
+.acc-viewerHero__title{
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 1000;
+  color: var(--text);
+}
+
+.acc-viewerHero__sub{
+  color: var(--muted);
+  font-weight: 900;
+  line-height: 1.8;
+}
+
+.acc-viewerStats{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+}
+
+.acc-viewerStats .pill{
+  background: rgba(44,123,229,.06);
+}
+
+.acc-viewerFrameShell{
+  display:grid;
+  gap: 14px;
+}
+
+.acc-viewerFrameShell .acc-playerStage{
+  min-height: min(68vw, 760px);
+}
+
+.acc-viewerFrameShell .acc-playerSurface{
+  min-height: 420px;
+}
+
+.acc-viewerFrameShell .acc-pdfViewer{
+  min-height: min(82vh, 980px);
+}
+
+.acc-pdfViewer{
+  min-height: 620px;
+}
+
+.acc-playerStage[hidden],
+.acc-pdfViewer[hidden],
+.acc-pdfPlaceholder[hidden]{
+  display:none;
+}
+
+.acc-screenWatermark{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.acc-screenWatermark__chip{
+  position: absolute;
+}
+
+.acc-screenWatermark__chip--one{
+  top: 18%;
+  right: 8%;
+  animation: viewportWatermarkOne 18s linear infinite alternate;
+}
+
+.acc-screenWatermark__chip--two{
+  bottom: 14%;
+  left: 10%;
+  animation: viewportWatermarkTwo 20s linear infinite alternate;
+}
+
+@keyframes playerWatermarkMove{
+  0%{ transform: translate(0, 0); }
+  100%{ transform: translate(-120px, 170px); }
+}
+
+@keyframes viewportWatermarkOne{
+  0%{ transform: translate(0, 0); }
+  100%{ transform: translate(-160px, 130px); }
+}
+
+@keyframes viewportWatermarkTwo{
+  0%{ transform: translate(0, 0); }
+  100%{ transform: translate(180px, -140px); }
+}
+
+@media (max-width: 860px){
+  .acc-playerSurface{ min-height: 240px; }
+  .acc-pdfViewer{ min-height: 420px; }
+  .acc-viewerFrameShell .acc-playerSurface{ min-height: 260px; }
+}
+
+@media (max-width: 640px){
+  .acc-viewerFrameShell .acc-playerStage{
+    min-height: 0;
+  }
+
+  .acc-viewerFrameShell .acc-playerSurface{
+    min-height: 0;
+  }
+
+  .acc-viewerHero__top{
+    align-items:stretch;
+  }
+
+  .acc-viewerFrameShell .acc-playerStage .acc-platformControls{
+    position: static;
+    inset: auto;
+    margin: 10px;
+  }
+
+  .acc-playerStage.acc-playerStage--nativeAppFullscreen .acc-platformControls,
+  .acc-playerStage:fullscreen .acc-platformControls,
+  .acc-playerStage:-webkit-full-screen .acc-platformControls{
+    position: absolute;
+    inset-inline-start: 10px;
+    inset-inline-end: 10px;
+    bottom: 10px;
+    margin: 0;
+  }
+
+  .acc-playerProtectionMask{
+    opacity: .45;
+  }
+
+  .acc-captureShield__action{
+    width: 100%;
+  }
+
+  .acc-playerToolbar{
+    align-items:stretch;
+  }
+
+  .acc-playerToolbar__actions{
+    width: 100%;
+  }
+
+  .acc-playerToolbar__actions .acc-modal-btn{
+    flex: 1 1 180px;
+    justify-content:center;
+  }
+
+  .acc-platformControls__group{
+    width: 100%;
+  }
+
+  .acc-platformControls__group--actions .acc-modal-btn{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .acc-playerStage--nativeAppFullscreen .acc-platformControls__iconBtn{
+    min-height: 34px;
+    padding-inline: 10px;
+    font-size: .82rem;
+    gap: 4px;
+  }
+
+  .acc-platformControls__timeline{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .acc-screenWatermark__chip{
+    font-size: .82rem;
+    padding: 7px 12px;
+  }
+}

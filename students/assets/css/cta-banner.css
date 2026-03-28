@@ -1,0 +1,58 @@
+.cta-banner{
+  padding: 22px 0 36px;
+}
+
+.cta-banner__box{
+  background: #7c1b2b; /* قريب جداً من الصورة */
+  border-radius: 18px;
+  padding: 46px 18px;
+
+  text-align: center;
+  color: #fff;
+
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+
+.cta-banner__title{
+  margin: 0 0 12px;
+  font-weight: 1000;
+  font-size: clamp(34px, 5vw, 64px);
+  letter-spacing: .2px;
+}
+
+.cta-banner__subtitle{
+  margin: 0 0 20px;
+  font-weight: 800;
+  font-size: clamp(16px, 2.2vw, 26px);
+  opacity: .95;
+}
+
+.cta-banner__btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 260px;
+  padding: 14px 22px;
+
+  border-radius: 12px;
+  text-decoration: none;
+
+  background: #e7f7fb;  /* زر فاتح مثل الصورة */
+  color: #0b7b7a;
+
+  font-weight: 1000;
+  border: 2px solid rgba(255,255,255,.30);
+
+  transition: .2s ease;
+}
+
+.cta-banner__btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+@media (max-width: 560px){
+  .cta-banner__box{ padding: 34px 14px; border-radius: 16px; }
+  .cta-banner__btn{ width: 100%; max-width: 320px; min-width: 0; }
+}

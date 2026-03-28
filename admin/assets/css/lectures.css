@@ -1,0 +1,209 @@
+/* CSS خاص بصفحة المحاضرات فقط */
+
+.lectures-hero{
+  border-radius: var(--radius);
+  border:2px solid var(--line);
+  background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(168,85,247,.08), rgba(249,115,22,.06));
+  padding: 16px;
+}
+.lectures-hero-title h1{margin:0; font-size: 32px; font-weight:1000}
+.lectures-hero-title p{margin:10px 0 0; color: var(--muted); font-weight:900}
+
+.lectures-metrics{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* form */
+.lectures-form{
+  padding:14px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:12px;
+  align-items:end;
+}
+@media (max-width: 1100px){
+  .lectures-form{grid-template-columns: 1fr 1fr}
+}
+@media (max-width: 980px){
+  .lectures-form{grid-template-columns: 1fr}
+}
+
+.lecture-select{
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(168,85,247,.95) 50%),
+    linear-gradient(135deg, rgba(168,85,247,.95) 50%, transparent 50%),
+    linear-gradient(to right, rgba(0,0,0,.06), rgba(0,0,0,.06));
+  background-position:
+    calc(18px) calc(50% - 3px),
+    calc(12px) calc(50% - 3px),
+    calc(44px) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 60%;
+  background-repeat: no-repeat;
+  padding-left: 52px;
+}
+
+.lectures-hint{
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.textarea2{
+  width:100%;
+  min-height: 120px;
+  resize: vertical;
+  padding: 12px 12px;
+  border-radius: 16px;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  color: var(--text);
+  font-weight:900;
+  font-size: 14px;
+  outline:none;
+}
+.textarea2:focus{
+  border-color: rgba(168,85,247,.55);
+  box-shadow: 0 0 0 9px rgba(168,85,247,.14);
+}
+
+/* list cards */
+.lecture-grid{
+  padding:14px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 1100px){
+  .lecture-grid{grid-template-columns: repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 720px){
+  .lecture-grid{grid-template-columns: 1fr}
+}
+
+.lecture-card{
+  border-radius: 18px;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.lecture-head{
+  padding:12px;
+  border-bottom:2px solid var(--line);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  background: linear-gradient(135deg, rgba(37,99,235,.08), rgba(168,85,247,.08));
+}
+.lecture-badge{
+  width:46px; height:46px;
+  display:grid;
+  place-items:center;
+  border-radius: 16px;
+  border:2px solid var(--line);
+  background: var(--panel);
+  flex: 0 0 auto;
+}
+.lecture-title{min-width:0}
+.lecture-name{
+  font-weight:1000;
+  font-size:16px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.lecture-sub{
+  margin-top:6px;
+  font-size:12px;
+  color: var(--muted);
+  font-weight:900;
+  line-height:1.7;
+}
+.tag{
+  display:inline-flex;
+  padding: 5px 10px;
+  border-radius:999px;
+  border:2px solid var(--line);
+  background: rgba(255,255,255,.08);
+  font-weight:1000;
+  font-size: 12px;
+  margin-inline-start: 8px;
+}
+.tag.buy{ border-color: rgba(34,197,94,.35); }
+.tag.attend{ border-color: rgba(59,130,246,.30); }
+
+.lecture-body{
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.lecture-details{
+  color: var(--text);
+  font-weight:900;
+  font-size: 13px;
+  line-height: 1.9;
+}
+.lecture-details.muted{ color: var(--muted); }
+
+.lecture-price{
+  border:2px solid var(--line);
+  background: rgba(255,255,255,.06);
+  padding:10px 12px;
+  border-radius: 16px;
+  font-weight:1000;
+}
+.lecture-price.muted{ color: var(--muted); }
+
+.lecture-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  margin-top: 2px;
+}
+
+/* أزرار ملونة */
+.link.info{ border-color: rgba(59,130,246,.35) }
+.link.warn{ border-color: rgba(249,115,22,.35) }
+.link.danger{ border-color: rgba(239,68,68,.35) }
+
+.lecture-manage-grid{
+  padding:14px;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 980px){
+  .lecture-manage-grid{grid-template-columns: 1fr}
+}
+.lecture-manage-card{
+  border:2px solid var(--line);
+  background: var(--panel2);
+  border-radius: 18px;
+  padding: 14px;
+}
+.lecture-manage-title{
+  font-weight:1000;
+  margin-bottom:10px;
+}
+.lecture-manage-list{
+  display:grid;
+  gap:8px;
+  color: var(--muted);
+  font-weight:900;
+}
+.lecture-manage-list b{color:var(--text)}
+.lecture-manage-form{
+  display:grid;
+  gap:12px;
+}

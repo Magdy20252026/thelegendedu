@@ -1,0 +1,12 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !^/students(?:/|$)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteCond %{DOCUMENT_ROOT}/students%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/students%{REQUEST_URI} -d
+RewriteRule ^(.+)$ students/$1 [L]

@@ -1,0 +1,350 @@
+/* CSS خاص بصفحة الطلاب فقط */
+
+.students-hero{
+  border-radius: var(--radius);
+  border:2px solid var(--line);
+  background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(168,85,247,.08), rgba(249,115,22,.06));
+  padding: 16px;
+}
+.students-hero-title h1{margin:0; font-size: 32px; font-weight:1000}
+.students-hero-title p{margin:10px 0 0; color: var(--muted); font-weight:900}
+.students-metrics{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Search */
+.students-search{
+  padding:14px;
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items:end;
+}
+@media (max-width: 980px){
+  .students-search{grid-template-columns: 1fr}
+}
+
+.select-pro{
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(168,85,247,.95) 50%),
+    linear-gradient(135deg, rgba(168,85,247,.95) 50%, transparent 50%),
+    linear-gradient(to right, rgba(0,0,0,.06), rgba(0,0,0,.06));
+  background-position:
+    calc(18px) calc(50% - 3px),
+    calc(12px) calc(50% - 3px),
+    calc(44px) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 60%;
+  background-repeat: no-repeat;
+  padding-left: 52px;
+}
+
+.hint{
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.hint-wide{
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 13px;
+  padding: 8px 2px 0;
+}
+
+/* Buttons custom */
+.link.disabled{
+  opacity: .55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.link.wallet.add{
+  border-color: rgba(34,197,94,.35);
+}
+.link.wallet.sub{
+  border-color: rgba(239,68,68,.35);
+}
+.link.pass{
+  border-color: rgba(168,85,247,.45);
+}
+
+/* Modal */
+.modal{
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display:none;
+  padding: 14px;
+}
+.modal.open{display:grid; place-items:center}
+.modal-card{
+  width: min(980px, 100%);
+  max-height: calc(100vh - 28px);
+  overflow:auto;
+  border-radius: var(--radius);
+  border:2px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+.modal-head{
+  padding: 14px;
+  border-bottom:2px solid var(--line);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  background: rgba(255,255,255,.06);
+}
+.modal-title{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.modal-title h3{margin:0; font-size: 18px; font-weight:1000}
+.modal-title p{margin:6px 0 0; font-size: 13px; color: var(--muted); font-weight:900}
+.badge{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius: 16px;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  flex: 0 0 auto;
+}
+.modal-close{
+  border:2px solid var(--line);
+  background: var(--panel2);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 10px 12px;
+  cursor:pointer;
+  font-weight:1000;
+}
+
+.students-form{
+  padding: 14px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  align-items:end;
+}
+@media (max-width: 980px){
+  .students-form{grid-template-columns: 1fr}
+}
+
+.center-fields{
+  grid-column: 1 / -1;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  border-radius: 18px;
+  padding: 12px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:12px;
+}
+@media (max-width: 1100px){
+  .center-fields{grid-template-columns: 1fr 1fr}
+}
+@media (max-width: 980px){
+  .center-fields{grid-template-columns: 1fr}
+}
+
+.mini-form{
+  padding: 14px;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+
+.students-manage-card{
+  margin: 14px;
+  border:2px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel2);
+  overflow: hidden;
+}
+.students-manage-meta{
+  padding: 0 14px 14px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   ✅ Desktop: ضبط حجم صفحة الطلاب + تمرير للجدول (عرضي/طولي)
+   + ✅ إطارات تمرير احترافية (Desktop فقط)
+   ========================= */
+@media (min-width: 981px){
+
+  /* عرض المحتوى بالكامل داخل الشاشة بدون تمدد غريب */
+  .main{
+    min-height: auto !important;
+    height: auto !important;
+    overflow: hidden;
+  }
+
+  /* حاوية الجدول: تمرير أفقي + رأسي */
+  .table-wrap{
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    max-height: calc(100vh - 360px);
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(168,85,247,.75) rgba(0,0,0,.08);
+  }
+
+  /* WebKit (Chrome/Edge/Safari) */
+  .table-wrap::-webkit-scrollbar{
+    width: 12px;
+    height: 12px;
+  }
+  .table-wrap::-webkit-scrollbar-track{
+    background: rgba(0,0,0,.08);
+    border: 2px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+  }
+  .table-wrap::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, rgba(168,85,247,.95), rgba(37,99,235,.85));
+    border: 3px solid rgba(0,0,0,.10);
+    border-radius: 14px;
+  }
+  .table-wrap::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(180deg, rgba(168,85,247,1), rgba(37,99,235,1));
+  }
+  .table-wrap::-webkit-scrollbar-corner{
+    background: rgba(0,0,0,.08);
+  }
+
+  /* الجدول يبقى بعرض أكبر من الشاشة عند الحاجة */
+  .table{
+    min-width: 1200px;
+  }
+}
+
+/* =========================
+   ✅ Mobile: إلغاء إطارات/تخصيص التمرير (Scrollbars) لجدول الطلاب
+   ========================= */
+@media (max-width: 980px){
+
+  /* Fix: cancel min-height that causes huge empty space on mobile (from dashboard.css) */
+  .main:has(.students-hero){
+    min-height: auto !important;
+    height: auto !important;
+    padding-bottom: 18px;
+  }
+
+  /* Keep layout aligned to top on mobile */
+  .layout{
+    align-items: flex-start;
+  }
+
+  /* Hero title sizes */
+  .students-hero-title h1{ font-size: 24px; }
+  .students-hero{ padding: 12px; }
+
+  /* Card header actions stack */
+  .cardx-head{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .cardx-actions{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cardx-actions .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Table => cards on mobile */
+  .table-wrap{
+    overflow: visible;
+  }
+  .table thead{
+    display: none;
+  }
+  .table, .table tbody, .table tr, .table td{
+    display: block;
+    width: 100%;
+  }
+  .table tr{
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    background: var(--panel2);
+    margin: 10px 0;
+    padding: 10px;
+  }
+  .table td{
+    border: 0 !important;
+    padding: 8px 0;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .table td::before{
+    content: attr(data-label);
+    color: var(--muted);
+    font-weight: 900;
+    font-size: 12px;
+  }
+
+  /* Actions column */
+  .table td.actions{
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 2px solid rgba(255,255,255,.06) !important;
+    margin-top: 6px;
+  }
+  .table td.actions .link,
+  .table td.actions button.link{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* ✅ إلغاء أي تخصيص للسكرول في الموبايل (لو المتصفح بيدعم) */
+  .table-wrap{
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+  .table-wrap::-webkit-scrollbar{
+    width: initial;
+    height: initial;
+  }
+  .table-wrap::-webkit-scrollbar-track{
+    background: initial;
+    border: initial;
+    border-radius: initial;
+  }
+  .table-wrap::-webkit-scrollbar-thumb{
+    background: initial;
+    border: initial;
+    border-radius: initial;
+  }
+  .table-wrap::-webkit-scrollbar-corner{
+    background: initial;
+  }
+
+  /* Modal spacing on mobile */
+  .modal{
+    padding: 10px;
+  }
+  .modal-card{
+    width: 100%;
+    border-radius: 16px;
+  }
+}

@@ -1,0 +1,190 @@
+/* ✅ Fixed header (always on top) */
+.site-header{
+  padding:14px 0;
+  direction:rtl;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  /* ✅ خلفية للمنطقة العلوية */
+  background: var(--page-bg);
+}
+
+/* ✅ عشان محتوى الصفحة ما يطلعش تحت الهيدر */
+body{
+  padding-top: 96px; /* عدّلها لو الهيدر أعلى/أقل */
+}
+
+.site-header__bar{
+  background:var(--hdr-bg);
+  color:var(--hdr-text);
+  border:1px solid var(--hdr-border);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:12px 18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+
+  position: relative;
+}
+
+/* Desktop left pack (brand + switch) */
+.left-pack{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:var(--hdr-text);
+  font-weight:1000;
+  min-width:0;
+}
+
+.brand__logo{
+  width:40px;height:40px;border-radius:12px;
+  object-fit:contain;
+  background:rgba(255,255,255,.92);
+  flex:0 0 auto;
+}
+html[data-theme="dark"] .brand__logo{ background:rgba(255,255,255,.88); }
+
+.brand__logo-fallback{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg,#ddd,#bbb);
+}
+
+.brand__name{
+  font-size:16px;line-height:1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:260px;
+}
+
+/* Theme switch */
+.theme-switch{
+  position:relative;
+  background:var(--sw-bg);
+  border-radius:999px;
+  padding:6px;
+  display:flex;
+  gap:6px;
+  align-items:center;
+  height:46px;
+  flex:0 0 auto;
+}
+
+.theme-switch__btn{
+  width:34px;height:34px;border-radius:999px;
+  border:0;background:transparent;cursor:pointer;
+  font-weight:1000;z-index:2;color:#4b1b1f;
+}
+
+.theme-switch__knob{
+  position:absolute;top:6px;left:6px;
+  width:34px;height:34px;border-radius:999px;
+  background:var(--sw-knob);
+  box-shadow:0 8px 18px rgba(0,0,0,.10);
+  transition:transform .35s ease;
+  z-index:1;
+}
+html[data-theme="light"] .theme-switch__knob{transform:translateX(0px);}
+html[data-theme="dark"] .theme-switch__knob{transform:translateX(40px);}
+
+/* Desktop right actions (login/register) */
+.actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+/* Mobile burger (hidden on desktop) */
+.nav-burger{
+  display:none;
+  width:46px;height:46px;border-radius:16px;
+  border:0;background:transparent;
+  cursor:pointer;position:relative;
+}
+.nav-burger span{
+  position:absolute;left:12px;right:12px;height:3px;
+  background:#8e1d28;border-radius:999px;
+}
+.nav-burger span:nth-child(1){top:15px;}
+.nav-burger span:nth-child(2){top:22px;}
+.nav-burger span:nth-child(3){top:29px;}
+
+/* Mobile center logo only */
+.mobile-center{
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex:1;
+}
+
+/* ✅ NEW: clickable link around mobile logo */
+.mobile-center__link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  border-radius:14px;
+  outline:none;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-center__link:focus{
+  box-shadow: 0 0 0 3px rgba(11,123,122,.18);
+}
+
+.mobile-center__logo{
+  width:44px;height:44px;border-radius:12px;
+  object-fit:contain;
+  background:rgba(255,255,255,.92);
+}
+html[data-theme="dark"] .mobile-center__logo{ background:rgba(255,255,255,.88); }
+
+.mobile-center__logo-fallback{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,#ddd,#bbb);
+}
+
+/* Mobile drawer */
+.mobile-drawer{display:none;margin-top:10px;}
+.mobile-drawer__box{
+  background:#cf2a37;
+  border-radius:18px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  box-shadow:var(--shadow);
+}
+.mobile-drawer .btnx.solid{ background:#8e1d28; }
+
+@media (max-width: 860px){
+  /* Hide desktop items */
+  .actions{display:none;}
+  .brand{display:none;}
+
+  /* Show mobile items */
+  .mobile-center{display:flex;}
+  .nav-burger{display:inline-flex;}
+  .left-pack{flex:0 0 auto;} /* keeps switch visible outside drawer */
+
+  .mobile-drawer.is-open{display:block;}
+}
+
+@media (max-width: 420px){
+  .site-header__bar{padding:10px 12px;}
+}

@@ -1,0 +1,165 @@
+.grades-sec{
+  padding: 26px 0 36px;
+}
+
+.grades-sec__head{
+  text-align:center;
+  margin-bottom: 16px;
+}
+
+.grades-sec__title{
+  margin: 0 0 6px;
+  font-weight: 1000;
+  font-size: clamp(28px, 4.2vw, 52px);
+  letter-spacing: .2px;
+}
+
+.grades-sec__subtitle{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 800;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+.grades-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.grade-cardx{
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow:hidden;
+  box-shadow: 0 14px 28px rgba(0,0,0,.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.grade-cardx__mediaLink{
+  display:block;
+  position: relative;
+  overflow:hidden;
+  background: rgba(0,0,0,.06);
+  text-decoration:none;
+  outline: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+html[data-theme="dark"] .grade-cardx__mediaLink{
+  background: rgba(255,255,255,.04);
+}
+
+/* ✅ show full image (no crop) */
+.grade-cardx__img{
+  width:100%;
+  height: 240px;
+  object-fit: contain;
+  object-position: center;
+  display:block;
+  background: transparent;
+  transform: scale(1);
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.grade-cardx__overlay{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.00) 0%, rgba(0,0,0,.18) 100%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events:none;
+}
+
+/* Desktop hover */
+@media (hover:hover){
+  .grade-cardx:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 22px 44px rgba(0,0,0,.14);
+  }
+  .grade-cardx:hover .grade-cardx__overlay{ opacity: 1; }
+  .grade-cardx:hover .grade-cardx__img{
+    transform: scale(1.04);
+    filter: saturate(1.04);
+  }
+  .grade-cardx:hover .grade-cardx__btn .arr{
+    transform: translateX(-3px);
+  }
+}
+
+/* ✅ JS-triggered touch animation (works on real mobile + devtools) */
+.grade-cardx.is-tap{
+  transform: translateY(-6px);
+  box-shadow: 0 22px 44px rgba(0,0,0,.14);
+}
+.grade-cardx.is-tap .grade-cardx__overlay{ opacity: 1; }
+.grade-cardx.is-tap .grade-cardx__img{
+  transform: scale(1.04);
+  filter: saturate(1.04);
+}
+.grade-cardx.is-tap .grade-cardx__btn .arr{
+  transform: translateX(-3px);
+}
+
+/* card body */
+.grade-cardx__body{
+  padding: 14px 14px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+.grade-cardx__name{
+  margin:0;
+  font-weight: 1000;
+  font-size: 18px;
+}
+
+.grade-cardx__btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  background: var(--primary);
+  color:#fff;
+  text-decoration:none;
+  font-weight: 1000;
+
+  border: 2px solid var(--primary);
+  transition: .2s ease;
+  white-space:nowrap;
+  outline: none;
+}
+
+.grade-cardx__btn:hover{
+  background: transparent;
+  color:var(--primary);
+}
+
+.grade-cardx__btn:focus{
+  box-shadow: 0 0 0 3px rgba(11,123,122,.25);
+}
+
+.grade-cardx__btn .arr{
+  display:inline-block;
+  transition: transform .2s ease;
+}
+
+@media (max-width: 980px){
+  .grades-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grade-cardx__img{ height: 220px; }
+}
+
+@media (max-width: 520px){
+  .grades-grid{ grid-template-columns: 1fr; }
+  .grade-cardx__img{ height: 210px; }
+}

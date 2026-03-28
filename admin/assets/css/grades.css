@@ -1,0 +1,155 @@
+/* CSS خاص بصفحة الصفوف الدراسية فقط (يدعم حقل الترتيب) */
+
+.grades-hero{
+  border-radius: var(--radius);
+  border:2px solid var(--line);
+  background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(168,85,247,.08), rgba(249,115,22,.06));
+  padding: 16px;
+}
+.grades-hero-title h1{margin:0; font-size: 32px; font-weight:1000}
+.grades-hero-title p{margin:10px 0 0; color: var(--muted); font-weight:900}
+.grades-metrics{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* form */
+.grades-form{
+  padding:14px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap:12px;
+  align-items:end;
+}
+@media (max-width: 1100px){
+  .grades-form{grid-template-columns: 1fr 1fr}
+}
+@media (max-width: 980px){
+  .grades-form{grid-template-columns: 1fr}
+}
+
+.grades-form .form-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.grades-order-hint{
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* old preview */
+.grades-old{
+  grid-column: 1 / -1;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  border-radius: 18px;
+  padding: 12px;
+  display:grid;
+  grid-template-columns: 120px 1fr;
+  gap:12px;
+  align-items:center;
+}
+@media (max-width: 520px){
+  .grades-old{grid-template-columns: 1fr}
+}
+.grades-old-preview{
+  width:120px; height:120px;
+  border-radius: 18px;
+  border:2px solid var(--line);
+  overflow:hidden;
+  background: rgba(255,255,255,.10);
+  display:grid;
+  place-items:center;
+}
+.grades-old-preview img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+.grades-noimg{
+  font-weight:1000;
+  color: var(--muted);
+}
+.grades-hint{
+  grid-column: 1 / -1;
+  margin-top:8px;
+  color: var(--muted);
+  font-weight:900;
+  font-size: 13px;
+}
+
+/* grid */
+.grades-grid{
+  padding:14px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 1100px){
+  .grades-grid{grid-template-columns: repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 720px){
+  .grades-grid{grid-template-columns: 1fr}
+}
+
+.grade-card{
+  border-radius: 18px;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.grade-cover{
+  height: 170px;
+  background: rgba(255,255,255,.10);
+  border-bottom:2px solid var(--line);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.grade-cover img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+.grade-cover-fallback{
+  font-size: 40px;
+  opacity:.85;
+}
+
+.grade-body{
+  padding: 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.grade-name{
+  font-weight:1000;
+  font-size: 16px;
+}
+.grade-meta{
+  color: var(--muted);
+  font-weight:900;
+  font-size: 12px;
+}
+.grade-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+}
+
+.grades-empty{
+  padding:14px;
+  color: var(--muted);
+  font-weight:900;
+}

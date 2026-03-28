@@ -1,0 +1,147 @@
+/* students/assets/css/account-course.css */
+
+.acc-coursePage{ padding: 14px 0 24px; }
+
+.acc-courseHero{
+  margin-top: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+.acc-courseHero__grid{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.acc-courseHero__img{
+  width:100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.02);
+}
+
+.acc-courseHero__imgFallback{
+  width:100%;
+  height: 220px;
+  display:grid;
+  place-items:center;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.02);
+  font-size: 44px;
+  font-weight: 1000;
+}
+
+.acc-courseHero__title{
+  font-size: 22px;
+  font-weight: 1000;
+  color: var(--text);
+}
+
+.acc-courseHero__sub{
+  margin-top: 6px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.acc-courseHero__pricing{ margin-top: 10px; display:grid; gap: 6px; }
+
+.acc-courseHero__counts{
+  margin-top: 12px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 900;
+}
+.acc-count{
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(0,0,0,.02);
+}
+
+.acc-courseHero__details{
+  margin-top: 12px;
+  color: var(--text);
+  line-height: 1.9;
+  font-weight: 800;
+}
+
+.acc-lecturesGrid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.acc-lecture{
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 12px;
+}
+
+.acc-lecture__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.acc-lecture__title{
+  font-weight: 1000;
+  color: var(--text);
+}
+
+.acc-lecture__lock{
+  width: 36px;
+  height: 36px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  border: 1px solid var(--border);
+  background: rgba(207,42,55,.08);
+}
+
+.acc-lecture__meta{
+  margin-top: 10px;
+  display:grid;
+  gap: 6px;
+  color: var(--text);
+  font-weight: 900;
+}
+
+.acc-lecture__row{
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0,0,0,.02);
+}
+
+.acc-lecture__details{
+  margin-top: 10px;
+  color: var(--muted);
+  font-weight: 900;
+  line-height: 1.9;
+}
+
+.acc-lecture__actions{
+  margin-top: 12px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 980px){
+  .acc-courseHero__grid{ grid-template-columns: 1fr; }
+  .acc-lecturesGrid{ grid-template-columns: 1fr; }
+}

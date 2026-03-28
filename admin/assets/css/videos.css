@@ -1,0 +1,299 @@
+/* =========================
+   Videos page (Professional)
+   ========================= */
+
+.videos-hero{
+  border-radius: var(--radius);
+  border:2px solid var(--line);
+  background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(168,85,247,.08), rgba(249,115,22,.06));
+  padding: 16px;
+}
+.videos-hero-title h1{margin:0; font-size: 32px; font-weight:1000}
+.videos-hero-title p{margin:10px 0 0; color: var(--muted); font-weight:900}
+
+.videos-metrics{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===== Form ===== */
+.videos-form{
+  padding:14px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:12px;
+  align-items:end;
+}
+@media (max-width: 1100px){
+  .videos-form{grid-template-columns: 1fr 1fr}
+}
+@media (max-width: 980px){
+  .videos-form{grid-template-columns: 1fr}
+}
+
+.videos-hint{
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* select styling (احترافي مثل باقي الصفحات) */
+.select-pro{
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(168,85,247,.95) 50%),
+    linear-gradient(135deg, rgba(168,85,247,.95) 50%, transparent 50%),
+    linear-gradient(to right, rgba(0,0,0,.06), rgba(0,0,0,.06));
+  background-position:
+    calc(18px) calc(50% - 3px),
+    calc(12px) calc(50% - 3px),
+    calc(44px) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 60%;
+  background-repeat: no-repeat;
+  padding-left: 52px;
+}
+
+.textarea2{
+  width:100%;
+  min-height: 140px;
+  resize: vertical;
+  padding: 12px 12px;
+  border-radius: 16px;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  color: var(--text);
+  font-weight:900;
+  font-size: 14px;
+  outline:none;
+}
+.textarea2:focus{
+  border-color: rgba(168,85,247,.55);
+  box-shadow: 0 0 0 9px rgba(168,85,247,.14);
+}
+
+/* ===== Video list cards ===== */
+.video-grid{
+  padding:14px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 1100px){
+  .video-grid{grid-template-columns: repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 720px){
+  .video-grid{grid-template-columns: 1fr}
+}
+
+.videos-empty{
+  padding:14px;
+  color: var(--muted);
+  font-weight:900;
+}
+
+.video-card{
+  border-radius: 18px;
+  border:2px solid var(--line);
+  background: var(--panel2);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.video-head{
+  padding:12px;
+  border-bottom:2px solid var(--line);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  background: linear-gradient(135deg, rgba(37,99,235,.08), rgba(168,85,247,.08));
+}
+.video-badge{
+  width:46px; height:46px;
+  display:grid;
+  place-items:center;
+  border-radius: 16px;
+  border:2px solid var(--line);
+  background: var(--panel);
+  flex: 0 0 auto;
+}
+.video-title{min-width:0}
+.video-name{
+  font-weight:1000;
+  font-size:16px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.video-sub{
+  margin-top:6px;
+  font-size:12px;
+  color: var(--muted);
+  font-weight:900;
+  line-height:1.7;
+}
+
+.video-body{
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.video-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tagx{
+  display:inline-flex;
+  padding: 6px 10px;
+  border-radius:999px;
+  border:2px solid var(--line);
+  background: rgba(255,255,255,.08);
+  font-weight:1000;
+  font-size: 12px;
+}
+.tagx.green{ border-color: rgba(34,197,94,.35); }
+.tagx.orange{ border-color: rgba(249,115,22,.35); }
+.tagx.purple{ border-color: rgba(168,85,247,.35); }
+.tagx.red{ border-color: rgba(239,68,68,.40); color: var(--danger); }
+
+/* colored action buttons */
+.video-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  margin-top: 2px;
+}
+
+.link.info{ border-color: rgba(59,130,246,.35) }
+.link.warn{ border-color: rgba(249,115,22,.35) }
+.link.danger{ border-color: rgba(239,68,68,.35) }
+
+.video-manage-grid{
+  padding:14px;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 980px){
+  .video-manage-grid{grid-template-columns: 1fr}
+}
+.video-manage-card{
+  border:2px solid var(--line);
+  background: var(--panel2);
+  border-radius: 18px;
+  padding: 14px;
+}
+.video-manage-title{
+  font-weight:1000;
+  margin-bottom:10px;
+}
+.video-manage-list{
+  display:grid;
+  gap:8px;
+  font-weight:900;
+  color: var(--muted);
+}
+.video-manage-list b{color:var(--text)}
+.video-manage-form{
+  display:grid;
+  gap:12px;
+}
+
+/* ===== Preview Modal ===== */
+.vmodal{
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display:none;
+  padding: 14px;
+  background: rgba(0,0,0,.45);
+}
+.vmodal.open{display:grid; place-items:center}
+
+.vmodal-card{
+  width: min(980px, 100%);
+  max-height: calc(100vh - 28px);
+  overflow:auto;
+  border-radius: var(--radius);
+  border:2px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.vmodal-head{
+  padding: 14px;
+  border-bottom:2px solid var(--line);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  background: rgba(255,255,255,.06);
+}
+
+.vmodal-title{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.vmodal-title h3{margin:0; font-size: 18px; font-weight:1000}
+.vmodal-title p{margin:6px 0 0; font-size: 13px; color: var(--muted); font-weight:900}
+
+.vmodal-close{
+  border:2px solid var(--line);
+  background: var(--panel2);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 10px 12px;
+  cursor:pointer;
+  font-weight:1000;
+  text-decoration:none;
+}
+.vmodal-close:hover{filter: brightness(1.03)}
+
+.vmodal-body{
+  padding: 14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.player{
+  border-radius: 18px;
+  border:2px solid var(--line);
+  background: rgba(0,0,0,.12);
+  overflow:hidden;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  display:grid;
+  place-items:center;
+}
+.player iframe,
+.player video{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.preview-hint{
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Mobile modal tuning */
+@media (max-width: 520px){
+  .vmodal{padding: 10px}
+  .vmodal-card{border-radius: 16px}
+}
