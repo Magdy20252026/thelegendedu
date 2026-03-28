@@ -112,8 +112,14 @@ try {
       if ($isGlobal) {
         if ($targetCourseId <= 0) {
           safeRollback($pdo);
-          $stmtC = $pdo->prepare("SELECT id, name FROM courses ORDER BY name ASC");
-          $stmtC->execute();
+          $stmtC = $pdo->prepare("
+            SELECT c.id, c.name
+            FROM courses c
+            INNER JOIN students s ON s.grade_id = c.grade_id
+            WHERE s.id = ?
+            ORDER BY c.name ASC
+          ");
+          $stmtC->execute([$studentId]);
           $courses = $stmtC->fetchAll(PDO::FETCH_ASSOC) ?: [];
           echo json_encode([
             'ok'          => false,
@@ -125,6 +131,10 @@ try {
           exit;
         }
         $courseId = $targetCourseId;
+      }
+
+      if (!student_course_matches_grade($pdo, $studentId, $courseId)) {
+        throw new RuntimeException('هذا الكورس غير متاح لصفك الدراسي.');
       }
 
       $stmt = $pdo->prepare("SELECT access_type FROM courses WHERE id=? LIMIT 1");
@@ -239,8 +249,14 @@ try {
     if ($isGlobal) {
       if ($targetCourseId <= 0) {
         safeRollback($pdo);
-        $stmtC = $pdo->prepare("SELECT id, name FROM courses ORDER BY name ASC");
-        $stmtC->execute();
+        $stmtC = $pdo->prepare("
+          SELECT c.id, c.name
+          FROM courses c
+          INNER JOIN students s ON s.grade_id = c.grade_id
+          WHERE s.id = ?
+          ORDER BY c.name ASC
+        ");
+        $stmtC->execute([$studentId]);
         $courses = $stmtC->fetchAll(PDO::FETCH_ASSOC) ?: [];
         echo json_encode([
           'ok'          => false,
@@ -254,6 +270,10 @@ try {
       $courseId = $targetCourseId;
     } else {
       if ($courseId <= 0) throw new RuntimeException('الكود غير صالح.');
+    }
+
+    if (!student_course_matches_grade($pdo, $studentId, $courseId)) {
+      throw new RuntimeException('هذا الكورس غير متاح لصفك الدراسي.');
     }
 
     $stmt = $pdo->prepare("SELECT access_type FROM courses WHERE id=? LIMIT 1");

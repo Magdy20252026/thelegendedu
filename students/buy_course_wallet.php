@@ -16,6 +16,10 @@ if ($courseId <= 0) {
 }
 
 try {
+  if (!student_course_matches_grade($pdo, $studentId, $courseId)) {
+    throw new RuntimeException('هذا الكورس غير متاح لصفك الدراسي.');
+  }
+
   // already enrolled?
   if (student_has_course_access($pdo, $studentId, $courseId)) {
     header("Location: account_course.php?course_id=" . $courseId);

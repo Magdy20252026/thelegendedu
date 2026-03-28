@@ -68,8 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           if ($targetCourseId <= 0) {
             $pdo->rollBack();
             $needsCourseSelect = true;
-            $stmtC = $pdo->prepare("SELECT id, name FROM courses ORDER BY name ASC");
-            $stmtC->execute();
+            $stmtC = $pdo->prepare("
+              SELECT c.id, c.name
+              FROM courses c
+              INNER JOIN students s ON s.grade_id = c.grade_id
+              WHERE s.id = ?
+              ORDER BY c.name ASC
+            ");
+            $stmtC->execute([$studentId]);
             $coursesList = $stmtC->fetchAll(PDO::FETCH_ASSOC) ?: [];
           } else {
             $courseId = $targetCourseId;
@@ -77,6 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (!$needsCourseSelect) {
+          if (!student_course_matches_grade($pdo, $studentId, $courseId)) {
+            throw new RuntimeException('هذا الكورس غير متاح لصفك الدراسي.');
+          }
+
           $stmt = $pdo->prepare("SELECT id FROM courses WHERE id=? LIMIT 1");
           $stmt->execute([$courseId]);
           if (!$stmt->fetchColumn()) throw new RuntimeException('الكورس غير موجود.');

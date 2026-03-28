@@ -23,6 +23,20 @@ function student_has_course_access(PDO $pdo, int $studentId, int $courseId): boo
   return (bool)$stmt->fetchColumn();
 }
 
+function student_course_matches_grade(PDO $pdo, int $studentId, int $courseId): bool {
+  if ($studentId <= 0 || $courseId <= 0) return false;
+
+  $stmt = $pdo->prepare("
+    SELECT 1
+    FROM students s
+    INNER JOIN courses c ON c.grade_id = s.grade_id
+    WHERE s.id=? AND c.id=?
+    LIMIT 1
+  ");
+  $stmt->execute([$studentId, $courseId]);
+  return (bool)$stmt->fetchColumn();
+}
+
 function lecture_get_course_id(PDO $pdo, int $lectureId): int {
   if ($lectureId <= 0) return 0;
   $stmt = $pdo->prepare("SELECT course_id FROM lectures WHERE id=? LIMIT 1");
