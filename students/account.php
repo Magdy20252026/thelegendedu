@@ -115,6 +115,7 @@ if (!$student) {
 $studentName = (string)($student['full_name'] ?? ($_SESSION['student_name'] ?? ''));
 $wallet = (float)($student['wallet_balance'] ?? 0);
 $studentStatus = (string)($student['status'] ?? 'اونلاين');
+$studentGradeId = (int)($student['grade_id'] ?? 0);
 $isOnline = ($studentStatus === 'اونلاين');
 
 /* ✅ Auto-enroll free courses so they appear in "كورساتك" */
@@ -124,7 +125,8 @@ try {
     SELECT ?, c.id, 'free'
     FROM courses c
     WHERE c.access_type = 'free'
-  ")->execute([$studentId]);
+      AND c.grade_id = ?
+  ")->execute([$studentId, $studentGradeId]);
 } catch (Throwable $e) { /* non-fatal */ }
 
 /* navigation */
@@ -429,6 +431,7 @@ try {
       LEFT JOIN student_course_enrollments e
         ON e.course_id = c.id AND e.student_id = ?
       WHERE e.id IS NULL
+        AND c.grade_id = ?
         AND c.access_type != 'attendance'
       ORDER BY c.id DESC
     ");
@@ -442,10 +445,11 @@ try {
       LEFT JOIN student_course_enrollments e
         ON e.course_id = c.id AND e.student_id = ?
       WHERE e.id IS NULL
+        AND c.grade_id = ?
       ORDER BY c.id DESC
     ");
   }
-  $stmt->execute([$studentId]);
+  $stmt->execute([$studentId, $studentGradeId]);
   $platformCourses = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
 } catch (Throwable $e) {
   $platformCourses = [];
@@ -466,9 +470,10 @@ try {
     INNER JOIN courses c ON c.id = e.course_id
     INNER JOIN grades gr ON gr.id = c.grade_id
     WHERE e.student_id = ?
+      AND c.grade_id = ?
     ORDER BY e.id DESC
   ");
-  $stmt->execute([$studentId]);
+  $stmt->execute([$studentId, $studentGradeId]);
   $myCourses = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
 } catch (Throwable $e) {
   $myCourses = [];

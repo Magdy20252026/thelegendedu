@@ -2,7 +2,6 @@
 // students/login.php
 require __DIR__ . '/inc/db.php';
 require_once __DIR__ . '/inc/platform_settings.php';
-require_once __DIR__ . '/inc/device_lock.php'; // ✅ NEW
 require __DIR__ . '/inc/student_auth.php';
 
 no_cache_headers();
@@ -110,17 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           if ($hash === '' || !password_verify($password, $hash)) {
             $errors[] = 'رقم التليفون أو كلمة السر غير صحيحة.';
           } else {
-            $check = device_lock_check_and_register($pdo, (int)$st['id']);
-            if (!$check['ok']) {
-              $errors[] = 'لا يمكن تسجيل الدخول من هذا الجهاز. الحساب مرتبط بجهاز واحد فقط. تواصل مع الإدارة لحذف الجهاز من لوحة التحكم ثم جرّب مرة أخرى.';
-            } else {
-              $_SESSION['student_id'] = (int)$st['id'];
-              $_SESSION['student_name'] = (string)$st['full_name'];
+            $_SESSION['student_id'] = (int)$st['id'];
+            $_SESSION['student_name'] = (string)$st['full_name'];
 
-              $toastOk = true;
-              $toastMessage = 'ليك وحشه ياضنايا يلا وخليك مركز معايا  ❤️';
-              $redirectToAccount = true;
-            }
+            $toastOk = true;
+            $toastMessage = 'ليك وحشه ياضنايا يلا وخليك مركز معايا  ❤️';
+            $redirectToAccount = true;
           }
         }
       } catch (Throwable $e) {

@@ -113,7 +113,7 @@ try {
   $course = null;
 }
 
-if (!$course) {
+if (!$course || (int)($course['grade_id'] ?? 0) !== (int)($student['grade_id'] ?? 0)) {
   header('Location: account.php?page=platform_courses');
   exit;
 }
